@@ -1,0 +1,15 @@
+<owl-carousel-o [options]="customOptions">
+
+  @for (category of categories; track $index) {
+  <ng-container>
+    <ng-template carouselSlide [id]="category._id">
+      <img [src]="category.image" [alt]="category.name" [title]="category.name" class="w-full object-cover h-100">
+      <h5 class="font-extrabold text-3xl">{{category.name}}</h5>
+    </ng-template>
+  </ng-container>
+  }@empty {
+  <h2 class="text-2xl font-extrabold grow w-full bg-orange-300">loading.........</h2>
+  }
+
+
+</owl-carousel-o>

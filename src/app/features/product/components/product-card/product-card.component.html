@@ -1,0 +1,17 @@
+<div class="p-3 border-main m-2 rounded-lg group hover:shadow-main transition-all hover:border-2 hover:cursor-pointer">
+  <div [routerLink]='["/product-details", product._id]'>
+    <div class=""><img class="w-full" [src]="product.images[0]" [alt]="product.title"></div>
+    <div>
+      <h5 class="text-main">{{product.category.name}}</h5>
+    </div>
+    <div>
+      <h1 class="font-bold">{{product.title}}</h1>
+    </div>
+    <div class="flex justify-between">
+      <span class="">{{product.price}} EGP</span>
+      <span>{{product.ratingsAverage}} <i class="fa-solid fa-star text-rating"></i></span>
+    </div>
+  </div>
+  <button class="main-btn capitalize">Add
+    to Cart</button>
+</div>

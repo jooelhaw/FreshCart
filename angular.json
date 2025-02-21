@@ -7,7 +7,11 @@
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
-          "style": "scss"
+          "style": "scss",
+          "skipTests": true
+        },
+        "@schematics/angular:service": {
+          "skipTests": true
         }
       },
       "root": "",
@@ -20,21 +24,22 @@
             "outputPath": "dist/fresh-cart",
             "index": "src/index.html",
             "browser": "src/main.ts",
-            "polyfills": [
-              "zone.js"
-            ],
+            "polyfills": ["zone.js"],
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": [
               {
                 "glob": "**/*",
-                "input": "public"
+                "input": "src/assets"
               }
             ],
             "styles": [
-              "src/styles.scss"
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.carousel.min.css",
+              "node_modules/ngx-owl-carousel-o/lib/styles/prebuilt-themes/owl.theme.default.min.css",
+              "src/styles.scss",
+              "node_modules/animate.css/animate.min.css"
             ],
-            "scripts": [],
+            "scripts": ["./node_modules/flowbite/dist/flowbite.min.js"],
             "server": "src/main.server.ts",
             "outputMode": "server",
             "ssr": {
@@ -43,6 +48,12 @@
           },
           "configurations": {
             "production": {
+              "fileReplacements": [
+                {
+                  "with": "/src/environments/environment.ts",
+                  "replace": "/src/environments/environments.prod.ts"
+                }
+              ],
               "budgets": [
                 {
                   "type": "initial",
@@ -83,10 +94,7 @@
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "polyfills": [
-              "zone.js",
-              "zone.js/testing"
-            ],
+            "polyfills": ["zone.js", "zone.js/testing"],
             "tsConfig": "tsconfig.spec.json",
             "inlineStyleLanguage": "scss",
             "assets": [
@@ -95,9 +103,7 @@
                 "input": "public"
               }
             ],
-            "styles": [
-              "src/styles.scss"
-            ],
+            "styles": ["src/styles.scss"],
             "scripts": []
           }
         }

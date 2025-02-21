@@ -1,0 +1,16 @@
+<section class="my-15">
+  <div class="container mx-auto">
+    <div class="grid sm:grid-cols-12">
+      <div class="col-span-4 p-2">
+        <img [src]="productDetails.images[0]" alt="{{ productDetails.title }}">
+      </div>
+      <div class="col-span-8 p-2">
+        <h1 class="font-extrabold text-4xl">{{ productDetails.title }}</h1>
+        <p>{{ productDetails.description }}</p>
+        <p><strong class="capitalize">category:</strong> {{productDetails.category.name}}</p>
+        <p><strong>Price:</strong> {{ productDetails.price }}</p>
+        <button class="main-btn opacity-100">Add to Cart</button>
+      </div>
+    </div>
+  </div>
+</section>
