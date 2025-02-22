@@ -7,6 +7,7 @@ import { RegisterComponent } from './core/auth/components/register/register.comp
 import { ProductsListComponent } from './features/product/components/products-list/products-list.component';
 import { HomeComponent } from './features/home/components/home/home.component';
 import { ProductDetailsComponent } from './features/product/components/product-details/product-details.component';
+import { RenderMode } from '@angular/ssr';
 
 export const routes: Routes = [
   {
@@ -24,7 +25,7 @@ export const routes: Routes = [
       { path: '', redirectTo: 'home', pathMatch: 'full' },
       { path: 'home', component: HomeComponent },
       { path: 'products', component: ProductsListComponent },
-      { path: 'product-details/:id', component: ProductDetailsComponent },
+      { path: 'product-details/:id', component: ProductDetailsComponent, data: {RenderMode: 'ssr'} },
       { path: '**', component: NotFoundComponent },
     ],
   },
